@@ -90,7 +90,7 @@ export default function AboutPage() {
             Our Story
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-12 items-center">
-            <div className="w-[800px] m-auto">
+            <div className="md:w-[800px] m-auto">
               <p className="text-lg mb-6">
                 Founded in 2021, NextTab emerged from a vision to revolutionize
                 the software engineering landscape. Our journey began with a
