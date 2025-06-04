@@ -1,7 +1,7 @@
 "use client";
 
-import NextTabLogo from "@/components/logo";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,9 +13,14 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-2xl flex items-center space-x-2 font-bold">
           <div>
-            <NextTabLogo />
+            {/* <NextTabLogo /> */}
+            <Image
+              src="/images/logo1.png"
+              width={100}
+              height={100}
+              className="object-contain"
+            />
           </div>
-          <span>NextTab</span>
         </h1>
         <nav className="hidden md:flex space-x-6">
           <Link

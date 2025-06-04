@@ -17,7 +17,7 @@ export const Testimonials = () => {
               name: "Elijah Mwanzia",
               role: "Founder, Pydev",
               quote:
-                "Working with NexTab was a game-changer for our startup. They delivered beyond our expectations.",
+                "Working with Nexttab solutions was a game-changer for our startup. They delivered beyond our expectations.",
             },
             {
               name: "Stanley Dzombo",

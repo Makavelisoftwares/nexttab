@@ -1,4 +1,4 @@
-import NextTabLogo from "@/components/logo";
+import Image from "next/image";
 import Link from "next/link";
 
 export const Footer = () => {
@@ -9,9 +9,14 @@ export const Footer = () => {
           <div>
             <h3 className="text-2xl flex items-center space-x-2 font-bold mb-4">
               <div>
-                <NextTabLogo />
+                {/* <NextTabLogo /> */}
+                <Image
+                  src="/images/logo1.png"
+                  width={100}
+                  height={100}
+                  className="object-contain"
+                />
               </div>
-              <span>NextTab</span>
             </h3>
             <p className="text-sky-300">
               Innovative Software Engineering Services
@@ -58,7 +63,7 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <p className="text-sky-300">Nairobi,KENYA</p>
             <p className="text-sky-300">Phone: +254112922255</p>
-            <p className="text-sky-300">Email: nexttab@gmail.com</p>
+            <p className="text-sky-300">Email: info@nexttabsolutions.com</p>
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
@@ -117,7 +122,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="mt-12 text-center text-sky-300 text-sm">
-          <p>&copy; 2024 NexTab. All rights reserved.</p>
+          <p>&copy; 2024 Nexttab Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

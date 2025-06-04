@@ -8,9 +8,9 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "NEXTAB",
+  title: "NEXTTAB SOLUTIONS",
   description:
-    "NEXTTAB is a software engineering company that helps you build software products for your micro and macro business. Our services range from web development, mobile development , enterprise system development, Data analysis and Tutoring. Feel free to reach us",
+    "NEXTTAB SOLUTION is a software engineering company that helps you build software products for your micro and macro business. Our services range from web development, mobile development , enterprise system development, Data analysis and Tutoring. Feel free to reach us",
 };
 
 export default function RootLayout({ children }) {

@@ -9,28 +9,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState, useTransition } from "react";
-import { createSub } from "./actions/subscribe.action";
-import { toast } from "sonner";
+import { useState} from "react";
+
 
 export const NewsLetter = () => {
   const [email, setemail] = useState("");
   const [name, setname] = useState("");
   const [open, setopen] = useState(false);
 
-  const [pending, startTtansition] = useTransition(false);
+  
 
-  const handleSubscribe = () => {
-    startTtansition(async () => {
-      const { err } = await createSub(name, email);
-      if (err) {
-        return;
-      }
-
-      setopen(false);
-      toast.success("thank you for subscribing");
-    });
-  };
+  
   return (
     <section className="py-20 bg-sky-50">
       <div className="container mx-auto px-4 text-center">
@@ -63,13 +52,13 @@ export const NewsLetter = () => {
             <div className="grid gap-4 py-4">
               <Input
                 id="name"
-                disabled={pending}
+                // disabled={pending}
                 onChange={(e) => setname(e.target.value)}
                 placeholder="Your name"
                 className="border-sky-300 focus:border-sky-500"
               />
               <Input
-                disabled={pending}
+                // disabled={pending}
                 id="email"
                 type="email"
                 onChange={(e) => setemail(e.target.value)}
@@ -77,8 +66,8 @@ export const NewsLetter = () => {
                 className="border-sky-300 focus:border-sky-500"
               />
               <Button
-                disabled={pending}
-                onClick={handleSubscribe}
+                // disabled={pending}
+                onClick={()=>{}}
                 type="submit"
                 className="bg-sky-500 hover:bg-sky-600 text-white transition-colors duration-300"
               >
