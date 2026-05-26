@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { Globe, Server, Smartphone, Cpu } from "lucide-react";
 
-const meshGradient = [
-  "radial-gradient(ellipse 65% 55% at 65% -5%, rgba(0,124,240,0.14) 0%, transparent 100%)",
-  "radial-gradient(ellipse 55% 45% at 95% 15%, rgba(0,223,216,0.10) 0%, transparent 100%)",
-  "radial-gradient(ellipse 45% 55% at 88% 55%, rgba(121,40,202,0.09) 0%, transparent 100%)",
-  "radial-gradient(ellipse 35% 45% at 55% 85%, rgba(255,0,128,0.07) 0%, transparent 100%)",
-  "radial-gradient(ellipse 50% 35% at 20% 30%, rgba(249,203,40,0.06) 0%, transparent 100%)",
-].join(", ");
 
 const codeLines = [
   { type: "comment", text: "// nexttabsolutions deploy" },
@@ -58,13 +51,7 @@ const capabilityCards = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-canvas-soft overflow-hidden">
-      {/* Mesh gradient backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: meshGradient }}
-      />
+    <section className="bg-canvas-soft overflow-hidden">
 
       <div className="relative max-w-[1400px] mx-auto px-6 pt-24 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
