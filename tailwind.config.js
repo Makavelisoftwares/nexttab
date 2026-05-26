@@ -49,12 +49,37 @@ module.exports = {
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
-  			}
+  			},
+  			ink: '#171717',
+  			canvas: '#ffffff',
+  			'canvas-soft': '#fafafa',
+  			'canvas-soft-2': '#f5f5f5',
+  			hairline: '#ebebeb',
+  			'hairline-strong': '#a1a1a1',
+  			body: '#4d4d4d',
+  			mute: '#888888',
+  			'on-primary': '#ffffff',
+  			link: '#0070f3',
+  			'link-deep': '#0761d1',
+  			'link-bg-soft': '#d3e5ff',
+  		},
+  		fontFamily: {
+  			sans: ['var(--font-sans)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+  			mono: ['var(--font-mono)', 'JetBrains Mono', 'Menlo', 'monospace'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			sm: 'calc(var(--radius) - 4px)',
+  			pill: '100px',
+  			'pill-sm': '64px',
+  			nav: '6px',
+  		},
+  		letterSpacing: {
+  			'display-xl': '-0.15rem',
+  			'display-lg': '-0.08rem',
+  			'display-md': '-0.06rem',
+  			'display-sm': '-0.0375rem',
   		},
   		keyframes: {
   			'accordion-down': {

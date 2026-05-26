@@ -5,86 +5,85 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-sky-900 text-white sticky top-0 z-50 transition-all duration-300">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl flex items-center space-x-2 font-bold">
-          <div>
-            {/* <NextTabLogo /> */}
-            <Image
-              src="/images/logo1.png"
-              width={100}
-              height={100}
-              className="object-contain"
-            />
-          </div>
-        </h1>
-        <nav className="hidden md:flex space-x-6">
+    <header className="bg-canvas border-b border-hairline">
+      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between gap-8">
+        {/* Logo */}
+        <Link href="/" className="shrink-0">
+          <Image src="/images/logo1.png" width={100} height={36} className="object-contain" alt="NextTab" />
+        </Link>
+
+        {/* Nav links — center */}
+        <nav className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-body hover:text-ink px-3 py-1.5 rounded-full transition-colors duration-150"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA cluster — right */}
+        <div className="hidden md:flex items-center gap-2">
           <Link
-            href="/"
-            className="hover:text-sky-300 transition-colors duration-200"
+            href="/contact"
+            className="text-sm font-medium text-ink bg-canvas border border-hairline hover:border-hairline-strong rounded-nav px-3 h-7 inline-flex items-center transition-colors duration-150"
           >
-            Home
-          </Link>
-          <Link
-            href="/services"
-            className="hover:text-sky-300 transition-colors duration-200"
-          >
-            Services
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-sky-300 transition-colors duration-200"
-          >
-            About
+            Log In
           </Link>
           <Link
             href="/contact"
-            className="hover:text-sky-300 transition-colors duration-200"
+            className="text-sm font-medium text-on-primary bg-ink hover:opacity-80 rounded-nav px-3 h-7 inline-flex items-center transition-opacity duration-150"
           >
-            Contact
+            Sign Up
           </Link>
-        </nav>
+        </div>
+
+        {/* Mobile hamburger */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-ink"
+          aria-label="Toggle menu"
         >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
+
+      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-sky-800 transition-all duration-300">
-          <Link
-            href="/"
-            className="block py-2 px-4 text-sm hover:bg-sky-700 transition-colors duration-200"
-          >
-            Home
-          </Link>
-          <Link
-            href="/services"
-            className="block py-2 px-4 text-sm hover:bg-sky-700 transition-colors duration-200"
-          >
-            Services
-          </Link>
-          <Link
-            href="/about"
-            className="block py-2 px-4 text-sm hover:bg-sky-700 transition-colors duration-200"
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="block py-2 px-4 text-sm hover:bg-sky-700 transition-colors duration-200"
-          >
-            Contact
-          </Link>
+        <div className="md:hidden border-t border-hairline bg-canvas">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-6 py-3 text-sm text-body hover:text-ink hover:bg-canvas-soft transition-colors duration-150"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="px-6 py-4 border-t border-hairline flex gap-2">
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex-1 text-center text-sm font-medium text-on-primary bg-ink rounded-nav py-2"
+            >
+              Sign Up
+            </Link>
+          </div>
         </div>
       )}
     </header>

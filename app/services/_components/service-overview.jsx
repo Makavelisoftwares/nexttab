@@ -1,87 +1,37 @@
-"use client";
+﻿import { Code, Server, Smartphone, Globe, Shield, Cpu } from "lucide-react";
 
-import { Code, Server, Smartphone, Globe, Shield, Cpu } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+const services = [
+  { icon: Code, title: "Web Development.", description: "Enterprise portals, SaaS platforms, e-commerce storefronts, and SME dashboards — built to scale." },
+  { icon: Server, title: "Cloud Solutions.", description: "Mission-critical cloud infrastructure for enterprise workloads and cost-optimised setups for growing businesses." },
+  { icon: Smartphone, title: "Mobile Development.", description: "Consumer and enterprise mobile apps for iOS and Android — field tools, commerce apps, and customer portals." },
+  { icon: Globe, title: "API Development.", description: "Headless commerce APIs, enterprise system integrations, and third-party connector layers." },
+  { icon: Shield, title: "Cybersecurity.", description: "Security audits, compliance hardening, and threat mitigation for regulated industries and enterprise environments." },
+  { icon: Cpu, title: "M-Pesa Integration.", description: "Payment flows built for SMEs, commerce platforms, and enterprise billing systems across East Africa." },
+];
 
 export const ServiceOverview = () => {
-  const services = [
-    {
-      icon: Code,
-      title: "Web Development",
-      description: "Custom web applications tailored to your business needs.",
-      details:
-        "Our web development services encompass everything from responsive websites to complex web applications. We use cutting-edge technologies like React, Next.js, and Node.js to build scalable, high-performance solutions that drive your business forward.",
-    },
-    {
-      icon: Server,
-      title: "Cloud Solutions",
-      description:
-        "Scalable and secure cloud infrastructure for your applications.",
-      details:
-        "We leverage cloud technologies to build robust, secure, and scalable infrastructures. Our expertise in AWS, Azure, and Google Cloud allows us to design and implement cloud solutions that optimize your operations and reduce costs.",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Development",
-      description:
-        "Intuitive and powerful mobile experiences for iOS and Android.",
-      details:
-        "Our mobile development team creates engaging, high-performance apps for iOS and Android platforms. We use React Native and Flutter to build cross-platform applications that provide native-like experiences while reducing development time and costs.",
-    },
-    {
-      icon: Globe,
-      title: "API Development",
-      description: "Robust and scalable APIs to power your digital ecosystem.",
-      details:
-        "We design and develop RESTful and GraphQL APIs that serve as the backbone of your digital infrastructure. Our APIs are built with scalability, security, and performance in mind, ensuring seamless integration across your applications.",
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description:
-        "Comprehensive security solutions to protect your digital assets.",
-      details:
-        "Our cybersecurity services provide end-to-end protection for your digital infrastructure. From penetration testing and vulnerability assessments to implementing robust security protocols, we ensure your data and systems are safeguarded against evolving threats.",
-    },
-    {
-      icon: Cpu,
-      title: "AI & Machine Learning",
-      description:
-        "Intelligent solutions that leverage the power of AI and ML.",
-      details:
-        "We harness the potential of artificial intelligence and machine learning to create intelligent systems that drive innovation. Our AI solutions range from predictive analytics and natural language processing to computer vision and deep learning models.",
-    },
-  ];
-
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="bg-canvas py-20 border-b border-hairline">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <p className="font-mono text-xs text-mute mb-8">{"// Service catalogue"}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, index) => (
-            <Card
+            <div
               key={index}
-              className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-canvas border border-hairline rounded-[8px] p-6 flex flex-col gap-3"
+              style={{ boxShadow: "0px_2px_2px_#0000000a, 0px_8px_8px_-8px_#0000000a" }}
             >
-              <CardHeader className="flex flex-col items-center">
-                <div className="p-2 bg-sky-100 rounded-full mb-4">
-                  <service.icon className="w-8 h-8 text-sky-600" />
-                </div>
-                <CardTitle className="text-xl font-semibold text-center">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center">
-                  {service.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              <div className="p-2 bg-canvas-soft rounded-[6px] w-fit">
+                <service.icon className="w-4 h-4 text-ink" strokeWidth={1.5} />
+              </div>
+              <h3
+                className="text-[20px] font-semibold text-ink leading-7"
+                style={{ letterSpacing: "-0.6px" }}
+              >
+                {service.title}
+              </h3>
+              <p className="text-sm text-body leading-5">{service.description}</p>
+            </div>
           ))}
         </div>
       </div>

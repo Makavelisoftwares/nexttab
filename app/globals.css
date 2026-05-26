@@ -89,6 +89,10 @@ body,
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-canvas-soft text-ink;
+    font-feature-settings: "ss01", "ss02";
+  }
+  code, pre, .font-mono {
+    font-feature-settings: normal;
   }
 }

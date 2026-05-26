@@ -1,159 +1,146 @@
-//contact
-"use client";
+﻿"use client";
 
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
+const contactInfo = [
+  { icon: Mail, title: "Email", value: "nexttab@gmail.com", href: "mailto:nexttab@gmail.com" },
+  { icon: Phone, title: "Phone", value: "+254 112 922 255", href: "tel:+254112922255" },
+  { icon: MapPin, title: "Office", value: "Nairobi, Kenya", href: "#" },
+];
 
 export default function ContactPage() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Here you would typically handle form submission, e.g., send data to an API
-    console.log("Form submitted");
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
-    <div className="min-h-screen bg-sky-50 text-sky-900">
-      {/* Hero Section */}
-      <section className="bg-sky-900 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
-          <p className="text-xl md:text-2xl mb-8 text-sky-200 max-w-3xl mx-auto">
-            We're here to answer your questions and discuss how we can help your
-            business thrive.
+    <main>
+      {/* Hero */}
+      <section className="bg-canvas-soft border-b border-hairline py-24">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <p className="font-mono text-xs text-mute mb-5">{"// Reach out"}</p>
+          <h1
+            className="text-[48px] md:text-[56px] font-semibold text-ink leading-[1.05] mb-5 max-w-lg"
+            style={{ letterSpacing: "-2.4px" }}
+          >
+            Let's build something together.
+          </h1>
+          <p className="text-lg text-body leading-7 max-w-md">
+            Whether you're a startup founder, an SME owner, a commerce operator, or an enterprise CTO — we're ready to scope your next project and get it built.
           </p>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-col items-center">
-                <Mail className="w-12 h-12 text-sky-600 mb-4" />
-                <CardTitle className="text-xl font-semibold">
-                  Email Us
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription>
-                  <a
-                    href="mailto:nexttab@gmail.com"
-                    className="text-sky-600 hover:underline"
-                  >
-                    nexttab@gmail.com
+      {/* Contact info row */}
+      <section className="bg-canvas border-b border-hairline py-16">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {contactInfo.map((item, index) => (
+              <div
+                key={index}
+                className="bg-canvas border border-hairline rounded-[8px] p-6 flex items-start gap-4"
+                style={{ boxShadow: "0px 1px 1px #00000005, 0px 2px 2px #0000000a" }}
+              >
+                <div className="p-2 bg-canvas-soft rounded-[6px] shrink-0">
+                  <item.icon className="w-4 h-4 text-ink" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p className="font-mono text-xs text-mute mb-1 uppercase tracking-widest">{item.title}</p>
+                  <a href={item.href} className="text-sm font-medium text-ink hover:text-link transition-colors duration-150">
+                    {item.value}
                   </a>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-col items-center">
-                <Phone className="w-12 h-12 text-sky-600 mb-4" />
-                <CardTitle className="text-xl font-semibold">Call Us</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription>
-                  <a
-                    href="tel:+11234567890"
-                    className="text-sky-600 hover:underline"
-                  >
-                    +254112922255
-                  </a>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-col items-center">
-                <MapPin className="w-12 h-12 text-sky-600 mb-4" />
-                <CardTitle className="text-xl font-semibold">
-                  Visit Us
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription>Nairobi ,KENYA</CardDescription>
-              </CardContent>
-            </Card>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Send Us a Message
-          </h2>
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Your name" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Your email"
-                  required
-                />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" placeholder="Message subject" required />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Your message"
-                  rows={6}
-                  required
-                />
-              </div>
-              <div className="md:col-span-2">
-                <Button
+      {/* Form + map */}
+      <section className="bg-canvas-soft border-b border-hairline py-24">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Form */}
+            <div>
+              <p className="font-mono text-xs text-mute mb-5">{"// Send a message"}</p>
+              <h2
+                className="text-[32px] font-semibold text-ink leading-10 mb-8"
+                style={{ letterSpacing: "-1.28px" }}
+              >
+                Tell us about your project.
+              </h2>
+              <form
+                onSubmit={handleSubmit}
+                className="bg-canvas border border-hairline rounded-[8px] p-7 space-y-4"
+                style={{ boxShadow: "0px 2px 2px #0000000a, 0px 8px 16px -4px #0000000a" }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-sm font-medium text-ink">Name</label>
+                    <input
+                      id="name"
+                      placeholder="Your name"
+                      required
+                      className="w-full h-10 px-3 text-sm text-ink bg-canvas border border-hairline rounded-[6px] focus:outline-none focus:border-hairline-strong placeholder:text-mute"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-sm font-medium text-ink">Email</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="you@company.com"
+                      required
+                      className="w-full h-10 px-3 text-sm text-ink bg-canvas border border-hairline rounded-[6px] focus:outline-none focus:border-hairline-strong placeholder:text-mute"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="subject" className="text-sm font-medium text-ink">Subject</label>
+                  <input
+                    id="subject"
+                    placeholder="What's this about?"
+                    required
+                    className="w-full h-10 px-3 text-sm text-ink bg-canvas border border-hairline rounded-[6px] focus:outline-none focus:border-hairline-strong placeholder:text-mute"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="text-sm font-medium text-ink">Message</label>
+                  <textarea
+                    id="message"
+                    placeholder="Tell us about your project..."
+                    rows={5}
+                    required
+                    className="w-full px-3 py-2.5 text-sm text-ink bg-canvas border border-hairline rounded-[6px] focus:outline-none focus:border-hairline-strong placeholder:text-mute resize-none"
+                  />
+                </div>
+                <button
                   type="submit"
-                  className="w-full bg-sky-600 hover:bg-sky-700 text-white transition-colors duration-300"
+                  className="inline-flex items-center gap-2 bg-ink text-on-primary font-medium text-sm rounded-pill px-5 py-2.5 hover:opacity-80 transition-opacity duration-150"
                 >
-                  Send Message
-                  <Send className="ml-2 h-4 w-4" />
-                </Button>
+                  Send message <Send className="w-3.5 h-3.5" />
+                </button>
+              </form>
+            </div>
+
+            {/* Map */}
+            <div className="flex flex-col gap-5">
+              <p className="font-mono text-xs text-mute">{"// Our location"}</p>
+              <div className="flex-1 rounded-[8px] overflow-hidden border border-hairline" style={{ minHeight: "320px" }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31822.188466131308!2d36.8219463!3d-1.2920659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d43a1b46e1%3A0x7fb8a5f8bbd3ad11!2sNairobi!5e0!3m2!1sen!2ske!4v1631531756798!5m2!1sen!2ske"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: "block", minHeight: "320px" }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="NextTab Office Location"
+                />
               </div>
             </div>
-          </form>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Our Location
-          </h2>
-          <div className="aspect-w-16 aspect-h-9 max-w-4xl mx-auto">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31822.188466131308!2d36.8219463!3d-1.2920659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d43a1b46e1%3A0x7fb8a5f8bbd3ad11!2sNairobi!5e0!3m2!1sen!2ske!4v1631531756798!5m2!1sen!2ske"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              title="TechNova Office Location"
-            ></iframe>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

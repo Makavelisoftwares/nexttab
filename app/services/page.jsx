@@ -1,142 +1,140 @@
-//services
-"use client";
-import { Code, Server, Smartphone, Globe, Shield, Cpu } from "lucide-react";
+﻿"use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Code, Server, Smartphone, Globe, Shield, Cpu } from "lucide-react";
 import { HeroSection } from "./_components/hero-section";
 import { ServiceOverview } from "./_components/service-overview";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const services = [
+  {
+    icon: Code,
+    title: "Web Development",
+    description: "Enterprise portals, SaaS platforms, and e-commerce storefronts — built to scale.",
+    details:
+      "We build web solutions for every business size: customer-facing storefronts for commerce brands, SaaS dashboards for startups, internal enterprise portals, and SME management systems. Built with React, Next.js, and Node.js — performant, secure, and maintainable.",
+  },
+  {
+    icon: Server,
+    title: "Cloud Solutions",
+    description: "Mission-critical cloud infrastructure for enterprise and growing businesses.",
+    details:
+      "From startup deployments to enterprise-scale multi-region architectures on AWS, Azure, or GCP — we handle design, migration, security hardening, and ongoing cost optimisation. Suitable for regulated industries, high-availability systems, and data-intensive workloads.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Development",
+    description: "Consumer apps, enterprise field tools, and commerce mobile experiences.",
+    details:
+      "We build iOS and Android apps for startups launching to market, enterprise teams needing field and operations tools, and commerce brands offering mobile-first shopping. Built with React Native and Flutter for native-quality performance across platforms.",
+  },
+  {
+    icon: Globe,
+    title: "API Development",
+    description: "Headless commerce APIs, enterprise integrations, and third-party connectors.",
+    details:
+      "We design RESTful and GraphQL APIs that serve as the backbone of your digital ecosystem — powering your commerce stack, connecting enterprise systems (ERP, CRM, supply chain), and exposing clean integrations for partners and third-party platforms.",
+  },
+  {
+    icon: Shield,
+    title: "Cybersecurity",
+    description: "Security audits and compliance hardening for regulated and enterprise environments.",
+    details:
+      "Critical for enterprise clients in finance, healthcare, and government — our cybersecurity practice covers penetration testing, vulnerability assessments, security architecture review, compliance gap analysis (ISO 27001, PCI-DSS, GDPR), and incident response planning.",
+  },
+  {
+    icon: Cpu,
+    title: "M-Pesa Integration",
+    description: "Payment flows for commerce, SMEs, and enterprise billing across East Africa.",
+    details:
+      "We implement M-Pesa STK Push, C2B, B2C, and B2B flows tailored to your business model — whether you're an e-commerce platform collecting payments, an SME managing disbursements, or an enterprise running payroll and supplier settlements.",
+  },
+];
 
 export default function ServicesPage() {
-  const services = [
-    {
-      icon: Code,
-      title: "Web Development",
-      description: "Custom web applications tailored to your business needs.",
-      details:
-        "Our web development services encompass everything from responsive websites to complex web applications. We use cutting-edge technologies like React, Next.js, and Node.js to build scalable, high-performance solutions that drive your business forward.",
-    },
-    {
-      icon: Server,
-      title: "Cloud Solutions",
-      description:
-        "Scalable and secure cloud infrastructure for your applications.",
-      details:
-        "We leverage cloud technologies to build robust, secure, and scalable infrastructures. Our expertise in AWS, Azure, and Google Cloud allows us to design and implement cloud solutions that optimize your operations and reduce costs.",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Development",
-      description:
-        "Intuitive and powerful mobile experiences for iOS and Android.",
-      details:
-        "Our mobile development team creates engaging, high-performance apps for iOS and Android platforms. We use React Native and Flutter to build cross-platform applications that provide native-like experiences while reducing development time and costs.",
-    },
-    {
-      icon: Globe,
-      title: "API Development",
-      description: "Robust and scalable APIs to power your digital ecosystem.",
-      details:
-        "We design and develop RESTful and GraphQL APIs that serve as the backbone of your digital infrastructure. Our APIs are built with scalability, security, and performance in mind, ensuring seamless integration across your applications.",
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description:
-        "Comprehensive security solutions to protect your digital assets.",
-      details:
-        "Our cybersecurity services provide end-to-end protection for your digital infrastructure. From penetration testing and vulnerability assessments to implementing robust security protocols, we ensure your data and systems are safeguarded against evolving threats.",
-    },
-    {
-      icon: Cpu,
-      title: "Mpesa Intergration",
-      description: "Mpesa transactions directed to your personal accounts.",
-      details:
-        "We harness the potential of mpesa intergration for our local clients to seamlessly transact and manage their businesses",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-sky-50 text-sky-900">
-      {/* Hero Section */}
+    <main>
       <HeroSection />
-
-      {/* Services Overview */}
       <ServiceOverview />
 
-      {/* Detailed Services */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Explore Our Services
-          </h2>
-          <Tabs
-            defaultValue={services[0].title.toLowerCase().replace(/\s+/g, "-")}
-            className="w-full"
+      {/* Detailed tabs */}
+      <section className="py-24 bg-canvas-soft border-b border-hairline">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <p className="font-mono text-xs text-mute mb-5">{"// Deep dive"}</p>
+          <h2
+            className="text-[32px] font-semibold text-ink leading-10 mb-12"
+            style={{ letterSpacing: "-1.28px" }}
           >
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-8">
-              {services.map((service, index) => (
+            Explore our services.
+          </h2>
+
+          <Tabs defaultValue="web-development" className="w-full">
+            <TabsList className="flex flex-wrap gap-2 bg-transparent p-0 mb-8 h-auto justify-start">
+              {services.map((service) => (
                 <TabsTrigger
-                  key={index}
+                  key={service.title}
                   value={service.title.toLowerCase().replace(/\s+/g, "-")}
-                  className="text-sm md:text-base"
+                  className="rounded-[64px] border border-hairline bg-canvas text-body text-sm font-medium px-4 py-1.5 h-auto data-[state=active]:bg-ink data-[state=active]:text-on-primary data-[state=active]:border-ink"
                 >
                   {service.title}
                 </TabsTrigger>
               ))}
             </TabsList>
-            {services.map((service, index) => (
+
+            {services.map((service) => (
               <TabsContent
-                className="mt-24"
-                key={index}
+                key={service.title}
                 value={service.title.toLowerCase().replace(/\s+/g, "-")}
               >
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <service.icon className="w-6 h-6 mr-2 text-sky-600" />
+                <div
+                  className="bg-canvas border border-hairline rounded-[8px] p-8 max-w-2xl"
+                  style={{ boxShadow: "0px 2px 2px #0000000a, 0px 8px 16px -4px #0000000a" }}
+                >
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="p-2 bg-canvas-soft rounded-[6px]">
+                      <service.icon className="w-4 h-4 text-ink" strokeWidth={1.5} />
+                    </div>
+                    <h3
+                      className="text-[20px] font-semibold text-ink"
+                      style={{ letterSpacing: "-0.6px" }}
+                    >
                       {service.title}
-                    </CardTitle>
-                    <CardDescription>{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p>{service.details}</p>
-                  </CardContent>
-                </Card>
+                    </h3>
+                  </div>
+                  <p className="text-sm text-mute mb-3">{service.description}</p>
+                  <p className="text-base text-body leading-6">{service.details}</p>
+                </div>
               </TabsContent>
             ))}
           </Tabs>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-sky-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Elevate Your Business?
-          </h2>
-          <p className="text-xl mb-10 text-sky-200 max-w-2xl mx-auto">
-            Let's discuss how our services can drive innovation and growth for
-            your company.
-          </p>
-          <Button
-            size="lg"
-            className="bg-white text-sky-900 hover:bg-sky-100 transition-colors duration-300 text-lg px-8 py-3 rounded-full"
-            onClick={() =>
-              window.open("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdxnawwYNQcVElAvtYUi3yJ9H1itO-Wq0rtuy5iGOn-3CMihw/formResponse", "_blank")
-            }
+      {/* Dark CTA band */}
+      <section className="bg-[#171717] py-24">
+        <div className="max-w-[1400px] mx-auto px-6 text-center">
+          <p className="font-mono text-xs text-white/40 mb-5">{"// Let's work together"}</p>
+          <h2
+            className="text-[32px] font-semibold text-white leading-10 mb-5 max-w-md mx-auto"
+            style={{ letterSpacing: "-1.28px" }}
           >
-            Get a Free Consultation
-          </Button>
+            Ready to scope your next project?
+          </h2>
+          <p className="text-base text-white/60 leading-6 max-w-sm mx-auto mb-10">
+            Whether you're a startup, an SME, a commerce brand, or an enterprise — let's talk about what you need to build.
+          </p>
+          <button
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/forms/d/e/1FAIpQLSdxnawwYNQcVElAvtYUi3yJ9H1itO-Wq0rtuy5iGOn-3CMihw/viewform",
+                "_blank"
+              )
+            }
+            className="inline-flex items-center bg-canvas text-ink font-medium text-base rounded-pill px-6 py-3 hover:opacity-90 transition-opacity duration-150"
+          >
+            Get a free consultation
+          </button>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

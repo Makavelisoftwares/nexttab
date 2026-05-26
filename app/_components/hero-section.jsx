@@ -1,37 +1,112 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
+
+const meshGradient = [
+  "radial-gradient(ellipse 65% 55% at 65% -5%, rgba(0,124,240,0.14) 0%, transparent 100%)",
+  "radial-gradient(ellipse 55% 45% at 95% 15%, rgba(0,223,216,0.10) 0%, transparent 100%)",
+  "radial-gradient(ellipse 45% 55% at 88% 55%, rgba(121,40,202,0.09) 0%, transparent 100%)",
+  "radial-gradient(ellipse 35% 45% at 55% 85%, rgba(255,0,128,0.07) 0%, transparent 100%)",
+  "radial-gradient(ellipse 50% 35% at 20% 30%, rgba(249,203,40,0.06) 0%, transparent 100%)",
+].join(", ");
+
+const codeLines = [
+  { type: "comment", text: "// nexttabsolutions deploy" },
+  { type: "key", text: "✓", suffix: " Compiling client components" },
+  { type: "key", text: "✓", suffix: " Optimising bundle (Next.js 14)" },
+  { type: "key", text: "✓", suffix: " Running build checks" },
+  { type: "dim", text: "" },
+  { type: "success", text: "▲  Deployed to Production" },
+  { type: "url", text: "https://nexttabsolutions.com" },
+  { type: "dim", text: "" },
+  { type: "dim", text: "Ready in  892ms" },
+];
 
 export const HeroSection = () => {
   return (
-    <section className="relative h-[600px] overflow-hidden">
-      <div className="absolute inset-0 bg-sky-900 opacity-80 z-10"></div>
-      <div className="relative aspect-square w-full h-full">
-        <Image
-          src="/images/code1.jpg"
-          fill
-          alt="Futuristic Technology"
-          className="object-cover"
-        />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="text-center text-white max-w-4xl px-4">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Innovate, Create, Elevate
-          </h2>
-          <p className="text-xl md:text-2xl mb-10 leading-relaxed">
-            Empowering businesses with cutting-edge software solutions tailored
-            for the future.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-sky-500 hover:bg-sky-600 text-white transition-colors duration-300 text-lg px-8 py-3 rounded-full"
+    <section className="relative bg-canvas-soft overflow-hidden">
+      {/* Mesh gradient backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: meshGradient }}
+      />
+
+      <div className="relative max-w-[1400px] mx-auto px-6 pt-24 pb-20">
+        {/* Announcement badge */}
+        <div className="flex mb-8">
+          <span className="inline-flex items-center gap-2 bg-canvas border border-hairline rounded-pill text-sm text-body px-4 py-1 shadow-[0px_1px_1px_#00000005,0px_2px_2px_#0000000a]">
+            <span className="font-mono text-xs text-mute">Serving</span>
+            <span className="w-px h-3 bg-hairline" />
+            Enterprise · Startups · SMEs · Commerce
+            <span className="text-mute">→</span>
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1
+          className="text-[48px] md:text-[56px] lg:text-[64px] font-semibold leading-[1.0] text-ink mb-6 max-w-3xl"
+          style={{ letterSpacing: "-2.4px" }}
+        >
+          Software engineering for businesses that mean business.
+        </h1>
+
+        {/* Lead */}
+        <p className="text-lg text-body leading-7 max-w-xl mb-10">
+          From fast-moving startups to established enterprises — Nexttab
+          solutions delivers web, mobile, cloud, and commerce solutions tailored
+          to your scale and industry.
+        </p>
+
+        {/* CTA row */}
+        <div className="flex flex-wrap items-center gap-3 mb-20">
+          <Link
+            href="/contact"
+            className="inline-flex items-center bg-ink text-on-primary font-medium text-base rounded-pill px-6 py-3 hover:opacity-80 transition-opacity duration-150"
           >
-            <Link href="/services">Discover Our Services</Link>
-          </Button>
+            Start your project
+          </Link>
+          <Link
+            href="/services"
+            className="inline-flex items-center bg-canvas text-ink font-medium text-base rounded-pill px-6 py-3 border border-hairline hover:border-hairline-strong shadow-[0px_1px_1px_#00000005,0px_2px_2px_#0000000a] transition-colors duration-150"
+          >
+            Explore services
+          </Link>
+        </div>
+
+        {/* Code editor mockup */}
+        <div className="max-w-lg rounded-[8px] overflow-hidden border border-hairline shadow-[0px_2px_2px_#0000000a,0px_8px_16px_-4px_#0000000a]">
+          {/* Title bar */}
+          <div className="bg-[#171717] flex items-center gap-1.5 px-4 py-2.5 border-b border-white/10">
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+            <span className="ml-3 font-mono text-[11px] text-white/40 uppercase tracking-widest">
+              terminal
+            </span>
+          </div>
+          <div className="bg-[#171717] px-5 py-4">
+            {codeLines.map((line, i) => (
+              <div key={i} className="font-mono text-[13px] leading-5">
+                {line.type === "comment" && (
+                  <span className="text-white/30">{line.text}</span>
+                )}
+                {line.type === "key" && (
+                  <span>
+                    <span className="text-[#50e3c2]">{line.text}</span>
+                    <span className="text-white/70">{line.suffix}</span>
+                  </span>
+                )}
+                {line.type === "success" && (
+                  <span className="text-white font-medium">{line.text}</span>
+                )}
+                {line.type === "url" && (
+                  <span className="text-[#0070f3]">{line.text}</span>
+                )}
+                {line.type === "dim" && (
+                  <span className="text-white/20">{line.text || " "}</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

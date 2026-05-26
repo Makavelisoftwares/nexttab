@@ -1,26 +1,17 @@
 import { HeroSection } from "./_components/hero-section";
 import { Services } from "./_components/services";
 import { CTA } from "./_components/call-to-action";
-import { NewsLetter } from "./_components/news-letter";
 import { Testimonials } from "./_components/testimonials";
+import { NewsLetter } from "./_components/news-letter";
 
-export default function Component() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-sky-50 text-sky-900">
-      {/* Hero Section */}
+    <main>
       <HeroSection />
-
-      {/* Services Section */}
       <Services />
-
-      {/* CTA Section */}
       <CTA />
-
-      {/* Newsletter Section */}
-      <NewsLetter />
-
-      {/* Testimonial Section */}
       <Testimonials />
-    </div>
+      <NewsLetter />
+    </main>
   );
 }
